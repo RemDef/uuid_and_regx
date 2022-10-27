@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="images">
+    <file>close_active.png</file>
+    <file>close_deactive.png</file>
+    <file>minimaze_active.png</file>
+    <file>minimaze_deactive.png</file>
+    <file>logo.png</file>
+    <file>regx_back.jpg</file>
+  </qresource>
+</RCC>
