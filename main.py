@@ -67,6 +67,21 @@ class MainWindow(QMainWindow):
         self.main.clear_regex_button.clicked.connect(self.clear_regex_area)
         self.main.copy_regex.clicked.connect(self.copy_regex)
 
+        self.main.new_regex_button.clicked.connect(self.check_new_regex)
+
+        self.main.set_regex.clicked.connect(self.set_regex)
+
+    def set_regex(self):
+        _str = self.main.line_str.text()
+        self.main.line_regex.setText(_str)
+
+    def check_new_regex(self):
+        checkbox = self.main.checkBox_new_regex
+        if checkbox.isChecked():
+            checkbox.setChecked(False)
+        else:
+            checkbox.setChecked(True)
+
     def clear_regex_area(self):
         self.main.line_regex.setText('')
 
@@ -95,8 +110,9 @@ class MainWindow(QMainWindow):
         self.main.line_regex.setText(regex_text)
 
     def text_to_regex(self):
-        _str = self.main.line_str.text()
-        self.main.line_regex.setText(_str)
+        if self.main.checkBox_new_regex.isChecked():
+            _str = self.main.line_str.text()
+            self.main.line_regex.setText(_str)
 
     def get_regex(self):
         result_r = None
@@ -194,7 +210,7 @@ def setMoveWindow(widget):
     move.__dict__.update({"b_move": False})
     return widget
 
-
+#pyinstaller --noconsole --onefile --icon="D:\python\my_projects\uuid_and_regex\images\icon.ico" main.py
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     main = MainWindow()
